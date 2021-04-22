@@ -1,6 +1,6 @@
 # dev_quiz
 
-A new Flutter project.
+This project was created from a RocketSeat course for learning Flutter.
 
 ## Getting Started
 
