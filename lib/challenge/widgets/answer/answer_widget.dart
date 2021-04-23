@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class AnswerWidget extends StatelessWidget {
   final AnswerModel answer;
   final bool isSelected;
-  final bool isdisabled;
-  final VoidCallback onTap;
+  final bool disabled;
+  final ValueChanged<bool> onTap;
 
   const AnswerWidget({
     Key? key,
     required this.answer,
     required this.onTap,
-    this.isSelected = false, this.isdisabled = false,
+    this.isSelected = false, this.disabled = false,
   }) : super(key: key);
 
   Color get _selectedColorRight =>
@@ -38,9 +38,11 @@ class AnswerWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: IgnorePointer(
-        ignoring: isdisabled,
+        ignoring: disabled,
         child: GestureDetector(
-          onTap: onTap,
+          onTap: (){
+            onTap(answer.isRight);
+          },
           child: Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
